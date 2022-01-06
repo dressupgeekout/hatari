@@ -220,8 +220,8 @@ void Dialog_DeviceDlg(void)
 	ConfigureParams.Midi.bEnableMidi = (devicedlg[DEVDLG_MIDIENABLE].state & SG_SELECTED);
 #ifdef HAVE_PORTMIDI
 	assert(sizeof(dlgMidiInName) <= sizeof(ConfigureParams.Midi.sMidiInPortName));
-	strcpy(ConfigureParams.Midi.sMidiInPortName, midiInName ? midiInName : "Off");
+	snprintf(ConfigureParams.Midi.sMidiInPortName, sizeof(ConfigureParams.Midi.sMidiInPortName), "%s", midiInName ? midiInName : "Off");
 	assert(sizeof(dlgMidiOutName) <= sizeof(ConfigureParams.Midi.sMidiOutPortName));
-	strcpy(ConfigureParams.Midi.sMidiOutPortName, midiOutName ? midiOutName : "Off");
+	snprintf(ConfigureParams.Midi.sMidiOutPortName, sizeof(ConfigureParams.Midi.sMidiOutPortName), "%s", midiOutName ? midiOutName : "Off");
 #endif
 }
